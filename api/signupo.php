@@ -1,8 +1,10 @@
-<?php
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+<?php
+  header("Access-Control-Allow-Origin: *");
+  header("Access-Control-Allow-Methods:POST, PUT, GET,  DELETE");
+  header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header("Allow:POST,GET");
+
 
 
    $link = mysqli_connect("shareddb-u.hosting.stackcp.net", "secret-diary-3133337529", "48a0gc2zih", "secret-diary-3133337529");
@@ -16,32 +18,34 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
    
 
  $error = "";
- $postdata = file_get_contents("php://input");
+$post=file_get_contents("php://input");
+$postdata=json_decode($post,true);
+$email = $postdata["email"];
+$password= $postdata["password"];
 
 if(isset($postdata) && !empty($postdata))
 {
-  
-  $request = json_decode($postdata);
-  $email = $request->email;
-  $password = $request->password;
         
-        if ($email) {
+        if ($email=="") {
             
             $error = "An email address is required.";
             
-        } else if ($password) {
+        } else if ($password=="") {
             
             $error = "A password is required";
+        }
+         else if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $alternative = 1;
             
-        } else if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-  
-            $error = "Please enter a valid email address.";
             
 }
-        
+        if($alternative!=1){
+            $error = "please enter a valid email adress.";
+        }
         if ($error != "") {
             
-            echo $error;
+            echo  $error;
+            
             exit();
             
         }
@@ -79,8 +83,15 @@ if(isset($postdata) && !empty($postdata))
             }}
             
 if ($error!=""){
-    echo  $error;
-}
+    
+  echo  $error;
+}}
+
+
 
 
 ?>
+
+
+
+

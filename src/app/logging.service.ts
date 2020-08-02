@@ -7,7 +7,7 @@ import { users } from './user.data.model';
   providedIn: 'root'
 })
 export class LoggingService {
-
+php :string ="http://makemoneyy.tech"
 error:string = ""
 settoken(token){
   localStorage.setItem('token',token);
@@ -17,16 +17,19 @@ gettoken(){
 }
   constructor( private http : HttpClient ,private router :Router ) { }
   signup(email,password){
-   return this.http.post('http://makemoneyy.tech/signupo.php',
-     {email,password},{responseType:'text'}
+   return this.http.post(`${this.php}/signupo.php`,
+     {email,password},{ responseType:"text"}
      ).pipe(map(respdata=>{
-      if(isNaN(parseInt(respdata))){
+       console.log(respdata);
+       
+       if(isNaN(parseInt(respdata))){
         this.error=respdata;
       }
       else{
        this.settoken(respdata);
        return 1
-     }}
+     }
+    }
 
      ))
       }}
