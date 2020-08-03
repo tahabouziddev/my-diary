@@ -6,12 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LogformComponent } from './logform/logform.component';
+import { DiaryComponent } from './diary/diary.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LogformComponent
+    LogformComponent,
+    DiaryComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
