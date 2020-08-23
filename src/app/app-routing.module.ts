@@ -6,7 +6,7 @@ import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
-  { path: 'diary', component: DiaryComponent }
+  { path: 'diary/:id', component: DiaryComponent}
 ];
 
 @NgModule({

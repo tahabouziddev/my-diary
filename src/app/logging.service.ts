@@ -53,4 +53,17 @@ gettoken(){
       ))
     }
     
+update(content,route,id){
+  return this.http.post(`${this.php}/update.php?doit=hii`,
+  {route,content,id},{ responseType:"text"}
+  )
+}
+updateo(content,route,id){
+  return this.http.post(`${this.php}/update.php?doit=hi`,
+  {route,content,id},{ responseType:"text"}
+  )
+}
+
+
+
     }

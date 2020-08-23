@@ -24,7 +24,7 @@ export class LogformComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.token){
-this.router.navigate(['/diary']);
+this.router.navigate(['/diary',1]);
     }
   }
 
