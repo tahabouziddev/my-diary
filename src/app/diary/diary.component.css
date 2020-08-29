@@ -1,3 +1,12 @@
 .textarea{
     height: 100%;
+    transition-property: transform;
+transition-duration: 5s;
 }
+.col-md-2{
+    text-align: center;
+}
+.rotate{
+    transform: rotateY(360deg) 
+}
+

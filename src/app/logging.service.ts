@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { users } from './user.data.model';
+import { Subject } from 'rxjs';
 @Injectable({ 
   providedIn: 'root'
 })
@@ -54,16 +55,19 @@ gettoken(){
     }
     
 update(content,route,id){
-  return this.http.post(`${this.php}/update.php?doit=hii`,
+  return this.http.post(`${this.php}/update.php`,
   {route,content,id},{ responseType:"text"}
   )
 }
 updateo(content,route,id){
-  return this.http.post(`${this.php}/update.php?doit=hi`,
+  return this.http.post(`${this.php}/update2.php`,
   {route,content,id},{ responseType:"text"}
   )
 }
 
-
+//cross dat comunication
+ subject = new Subject<string>();
+ content= new Subject<string>();
+ smthing= new Subject<boolean>();
 
     }

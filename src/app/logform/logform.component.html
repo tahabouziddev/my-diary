@@ -19,7 +19,6 @@
   <button type="submit" (click)="signuser()" class="btn btn-primary">Submit</button>
 </form>
 
-<h1>{{email}}</h1>
 <form>
   <div *ngIf="eror2!='' " class="alert alert-danger" role="alert">
     {{eror2}}
@@ -41,4 +40,3 @@
   <button type="submit" (click)="loguser()" class="btn btn-primary">Submit</button>
 </form>
 
-<h1 *ngIf="token">{{token}}</h1>

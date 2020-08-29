@@ -24,12 +24,14 @@ export class DiaryComponent implements OnInit,AfterViewInit {
 
   constructor(private route:ActivatedRoute,private router:Router,private update:LoggingService) { }
 
- url=this.route.snapshot.params
- urlo:number =parseInt( this.url.id )
-
+//  url=this.route.snapshot.params
+//  urlo:number =parseInt( this.url.id )
+       
 
 
 @ViewChild('header') header:ElementRef;
+//all properties declarations
+urlo:number
 result= Math.max( body.scrollHeight, body.offsetHeight, 
   html.clientHeight, html.scrollHeight, html.offsetHeight )-56;
   resulto=this.result.toString()+"px"
@@ -37,10 +39,45 @@ heightt:number;
 heighttt:number;
 height=this.result-this.heightt
 num=1
-content:string="type whatever you want here"
-
+content:string
+contento:string
+ther:string
+margino=this.result/2
+marginoo=this.margino.toString()+"px"
+urlo1=this.urlo-this.num
+urlo2=this.urlo+this.num
+rotate=false
   ngOnInit(): void {
-    this.updatedatabaseo()
+    this.update.subject.next(this.content)
+    this.route.params.subscribe(res=>{
+      this.urlo=parseInt(res.id)
+    })
+    console.log(this.urlo);
+    
+      this.update.updateo(this.content,this.urlo,this.update.gettoken()).subscribe(
+        respo=>{
+          console.log(respo);
+          this.content=respo
+        
+        }
+      )
+      this.update.smthing.subscribe(res=>
+        {
+          if(res==true){
+         this.update.content.subscribe(ponse=>{
+          this.update.updateo(this.content,ponse,this.update.gettoken()).subscribe(
+            respo=>{
+              this.content=respo
+            
+            }
+          )
+          this.rotate=!this.rotate
+
+          this.router.navigate(['diary',ponse])
+         })
+
+          }
+        })
     
   }
 
@@ -49,10 +86,46 @@ content:string="type whatever you want here"
     
     console.log(this.header.nativeElement.offsetHeight);
 }
+urlore=this.urlo%2
 changeroute(){
-  this.urlo=this.urlo+this.num
-  this.router.navigate(['diary',this.urlo])
+  this.update.updateo(this.content,this.urlo+1,this.update.gettoken()).subscribe(
+    respo=>{
+      console.log(respo);
+      this.content=respo
+    
+    }
+  )
+  this.rotate=!this.rotate
+
+ 
+  this.router.navigate(['diary',this.urlo+1])
+  
 }
+
+rotatee(){
+  if (this.rotate) {
+    return 'rotate'
+    
+  }
+}
+
+changeroute1(){
+  this.update.updateo(this.content,this.urlo-1,this.update.gettoken()).subscribe(
+    respo=>{
+      console.log(respo);
+      this.content=respo
+    
+    }
+  )
+  this.rotate=!this.rotate
+
+  this.router.navigate(['diary',this.urlo-1])
+  
+
+
+}
+
+
 updatedatabase(){
 this.update.update(this.content,this.urlo,this.update.gettoken()).subscribe(
   respo=>{
@@ -62,15 +135,7 @@ this.update.update(this.content,this.urlo,this.update.gettoken()).subscribe(
   }
 )
 }
-updatedatabaseo(){
-  this.update.updateo(this.content,this.urlo,this.update.gettoken()).subscribe(
-    respo=>{
-      console.log(respo);
-      this.content=respo
-    
-    }
-  )
-  }
+
 
 }
 

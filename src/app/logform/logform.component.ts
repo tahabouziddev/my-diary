@@ -24,16 +24,15 @@ export class LogformComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.token){
-this.router.navigate(['/diary',1]);
+this.router.navigate(['diary',1]);
     }
   }
 
 signuser(){
   this.logging.signup(this.email,this.password).subscribe((resdata=>{
     if(resdata==1){
-     console.log("suc");
      this.token= parseInt(this.logging.gettoken());
-     this.router.navigate(["/diary"]);
+     this.router.navigate(["diary",1]);
     }else{
     this.eror =  this.logging.error
 
@@ -44,9 +43,8 @@ signuser(){
   loguser(){
     this.logging.login(this.email2,this.password2).subscribe((resdata=>{
       if(resdata==1){
-       console.log("suc");
        this.token= parseInt(this.logging.gettoken());
-       this.router.navigate(['/diary']);
+       this.router.navigate(['diary',1]);
       }else{
       this.eror2 =  this.logging.error2;
   

@@ -26,13 +26,11 @@
         
 if(isset($postdata) && !empty($postdata))
 {
-        
-        
-// $query="UPDATE users ($dbname) VALUE ('". mysqli_real_escape_string($link , $content)."') WHERE id= '". mysqli_real_escape_string($link, $id)."' ";
-$query = "UPDATE `users` SET $dbname = '".mysqli_real_escape_string($link,$content)."' WHERE id = ".mysqli_real_escape_string($link, $id)." LIMIT 1";
-        mysqli_query($link,$query);
-        
 
-        
+
+    $query = "SELECT $dbname FROM `users` WHERE id = ".mysqli_real_escape_string($link, $id)." LIMIT 1";
+    $row = mysqli_fetch_array(mysqli_query($link, $query));
+     $thecontent = $row[$dbname];
+echo $thecontent;
+
 }
-?>

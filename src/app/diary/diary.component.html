@@ -2,10 +2,13 @@
 
 <div class="container">
     <div class="row">
-        <textarea  (keypress)="updatedatabase()" [(ngModel)]="content" [ngStyle]="{'height': resulto}" class="textarea col-md-12" ></textarea>
-
-
+      <div class="col-md-2" [ngStyle]="{'margin-top':marginoo}">  
+          <button (click)="changeroute1()" class="btn btn-success ">somduhuhue shit</button>
+</div>
+        <textarea  (keypress)="updatedatabase()" [(ngModel)]="content" [ngClass]="rotatee()" [ngStyle]="{'height': resulto}"  class="textarea col-md-8" ></textarea>
+<div class="col-md-2" [ngStyle]="{'margin-top':marginoo}">
+        <button (click)="changeroute()" class="btn btn-success">some shit</button></div>
     </div>
 </div>
-<button (click)="changeroute()" class="btn btn-success">some shit</button>
-<button (click)="updatedatabase()" class="btn btn-success">somduhuhue shit</button>
+<input [(ngModel)]="ther">
+
